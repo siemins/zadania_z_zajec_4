@@ -1,0 +1,36 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Utwórz tablicę i wypełnij ją losowymi wartościami
+        int[] tablica = GenerujTablice(10);
+
+        // Wypisz tablicę od tyłu
+        WypiszOdTylu(tablica);
+
+        Console.ReadLine();
+    }
+
+    static int[] GenerujTablice(int rozmiar)
+    {
+        Random random = new Random();
+        int[] tablica = new int[rozmiar];
+
+        for (int i = 0; i < rozmiar; i++)
+        {
+            tablica[i] = random.Next(1, 100); // losowa wartość z zakresu 1-100
+        }
+
+        return tablica;
+    }
+
+    static void WypiszOdTylu(int[] tablica)
+    {
+        for (int i = tablica.Length - 1; i >= 0; i--)
+        {
+            Console.WriteLine(tablica[i]);
+        }
+    }
+}

@@ -1,0 +1,70 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Utwórz tablicę i wypełnij ją losowymi wartościami
+        int[] tablica = GenerujTablice(10);
+
+        Console.WriteLine("Tablica przed sortowaniem:");
+        WypiszTablice(tablica);
+
+        SortowaniePrzezWybieranie(tablica);
+
+        Console.WriteLine("Tablica po sortowaniu:");
+        WypiszTablice(tablica);
+
+        Console.ReadLine();
+    }
+
+    static int[] GenerujTablice(int rozmiar)
+    {
+        Random random = new Random();
+        int[] tablica = new int[rozmiar];
+
+        for (int i = 0; i < rozmiar; i++)
+        {
+            tablica[i] = random.Next(1, 100); // losowa wartość z zakresu 1-100
+        }
+
+        return tablica;
+    }
+
+    static void WypiszTablice(int[] tablica)
+    {
+        foreach (int element in tablica)
+        {
+            Console.Write(element + " ");
+        }
+
+        Console.WriteLine();
+    }
+
+    static void SortowaniePrzezWybieranie(int[] tablica)
+    {
+        int n = tablica.Length;
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            int indeksMin = i;
+
+            for (int j = i + 1; j < n; j++)
+            {
+                if (tablica[j] < tablica[indeksMin])
+                {
+                    indeksMin = j;
+                }
+            }
+
+            if (indeksMin != i)
+            {
+                // Zamiana miejscami
+                int temp = tablica[i];
+                tablica[i] = tablica[indeksMin];
+                tablica[indeksMin] = temp;
+            }
+        }
+    }
+}
+s

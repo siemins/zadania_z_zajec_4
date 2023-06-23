@@ -1,0 +1,62 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Utwórz tablicê i wype³nij j¹ losowymi wartoœciami
+        int[] tablica = GenerujTablice(10);
+
+        Console.WriteLine("Tablica przed sortowaniem:");
+        WypiszTablice(tablica);
+
+        SortowaniePrzezWstawianie(tablica);
+
+        Console.WriteLine("Tablica po sortowaniu:");
+        WypiszTablice(tablica);
+
+        Console.ReadLine();
+    }
+
+    static int[] GenerujTablice(int rozmiar)
+    {
+        Random random = new Random();
+        int[] tablica = new int[rozmiar];
+
+        for (int i = 0; i < rozmiar; i++)
+        {
+            tablica[i] = random.Next(1, 100); // losowa wartoœæ z zakresu 1-100
+        }
+
+        return tablica;
+    }
+
+    static void WypiszTablice(int[] tablica)
+    {
+        foreach (int element in tablica)
+        {
+            Console.Write(element + " ");
+        }
+
+        Console.WriteLine();
+    }
+
+    static void SortowaniePrzezWstawianie(int[] tablica)
+    {
+        int n = tablica.Length;
+
+        for (int i = 1; i < n; i++)
+        {
+            int obecnyElement = tablica[i];
+            int j = i - 1;
+
+            while (j >= 0 && tablica[j] > obecnyElement)
+            {
+                tablica[j + 1] = tablica[j];
+                j--;
+            }
+
+            tablica[j + 1] = obecnyElement;
+        }
+    }
+}

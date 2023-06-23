@@ -1,0 +1,68 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Utwórz tablicê i wype³nij j¹ losowymi wartoœciami
+        int[] tablica = GenerujTablice(10);
+
+        Console.WriteLine("Tablica przed sortowaniem:");
+        WypiszTablice(tablica);
+
+        SortowanieBabelkowe(tablica);
+
+        Console.WriteLine("Tablica po sortowaniu:");
+        WypiszTablice(tablica);
+
+        Console.ReadLine();
+    }
+
+    static int[] GenerujTablice(int rozmiar)
+    {
+        Random random = new Random();
+        int[] tablica = new int[rozmiar];
+
+        for (int i = 0; i < rozmiar; i++)
+        {
+            tablica[i] = random.Next(1, 100); // losowa wartoœæ z zakresu 1-100
+        }
+
+        return tablica;
+    }
+
+    static void WypiszTablice(int[] tablica)
+    {
+        foreach (int element in tablica)
+        {
+            Console.Write(element + " ");
+        }
+
+        Console.WriteLine();
+    }
+
+    static void SortowanieBabelkowe(int[] tablica)
+    {
+        int n = tablica.Length;
+        bool zamiana;
+
+        do
+        {
+            zamiana = false;
+
+            for (int i = 0; i < n - 1; i++)
+            {
+                if (tablica[i] > tablica[i + 1])
+                {
+                    // Zamiana miejscami
+                    int temp = tablica[i];
+                    tablica[i] = tablica[i + 1];
+                    tablica[i + 1] = temp;
+                    zamiana = true;
+                }
+            }
+
+            n--;
+        } while (zamiana);
+    }
+}
